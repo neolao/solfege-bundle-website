@@ -1,0 +1,45 @@
+{
+    "name": "solfegejs-website",
+    "description": "Website bundle of SolfegeJS",
+    "version": "0.1.0",
+    "author": "neolao <contact@neolao.com>",
+    "repository": "https://github.com/neolao/solfege-bundle-website.git",
+    "license": "MIT",
+    "main": "lib/Bundle.js",
+    "engines": {
+        "node": ">= 6"
+    },
+    "files": [
+        "lib"
+    ],
+    "peerDependencies": {
+        "solfegejs": "2.x"
+    },
+    "dependencies": {
+        "solfegejs-server": "2.x"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.7",
+        "babel-preset-solfege": "^1.0.1",
+        "flow-bin": "^0.46.0",
+        "gnomon": "^1.5.0",
+        "watch": "^1.0.2"
+    },
+    "scripts": {
+        "flow-stop": "flow stop",
+        "flow-start": "flow start",
+        "flow-restart": "flow stop; flow start",
+        "prepare": "npm run build",
+        "prebuild": "flow",
+        "build": "babel --out-dir lib src --copy-files",
+        "watch": "watch 'echo \"----------\"; npm run build --silent | gnomon' ./src",
+        "example-build": "flow; babel --out-dir example/lib example/src --copy-files",
+        "example-console": "node example/lib/console.js"
+    },
+    "babel": {
+        "presets": [
+            "solfege"
+        ],
+        "comments": false
+    }
+}
