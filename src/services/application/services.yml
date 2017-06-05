@@ -1,0 +1,7 @@
+services:
+    # Server service
+    solfege_website_server:
+        class: Application/Service/ServerService
+        arguments:
+            - "@http_server_factory"
+            - "%servers%"

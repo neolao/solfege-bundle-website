@@ -1,0 +1,10 @@
+# Commands of the website bundle
+services:
+    # Start website servers
+    solfege_website_command_start:
+        class: Application/Command/StartCommand
+        arguments:
+            - "@solfege_configuration"
+        tags:
+            - { name: "solfege.console.command" }
+

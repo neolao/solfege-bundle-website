@@ -1,0 +1,5 @@
+imports:
+    - { resource: "default.yml" }
+    - { resource: "routing.yml", property: "routing" }
+    - { resource: "parameters.yml", property: "parameters" }
+

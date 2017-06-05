@@ -1,0 +1,6 @@
+# Servers
+#
+servers:
+    -
+        host: "%parameters.server_default_host%"
+        port: "%parameters.server_default_port%"

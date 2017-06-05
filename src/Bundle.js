@@ -24,6 +24,7 @@ export default class Bundle implements BundleInterface, DependentBundleInterface
      */
     *installDependencies(application:ApplicationInterface):Generator<void,void,void>
     {
+        // Install server bundle
         application.addBundle(new ServerBundle);
     }
 }
