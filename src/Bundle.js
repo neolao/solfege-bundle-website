@@ -1,5 +1,6 @@
 /* @flow */
 import ServerBundle from "solfegejs-server"
+import RouterBundle from "solfegejs-server-router"
 import type {ApplicationInterface, BundleInterface, DependentBundleInterface} from "solfegejs/interface"
 
 /**
@@ -22,9 +23,12 @@ export default class Bundle implements BundleInterface, DependentBundleInterface
      *
      * @param   {ApplicationInterface}  application     SolfegeJS application
      */
-    *installDependencies(application:ApplicationInterface):Generator<void,void,void>
+    *installDependencies(application:ApplicationInterface):Generator<*,void,*>
     {
-        // Install server bundle
+        // Add server bundle
         application.addBundle(new ServerBundle);
+
+        // Add router bundle
+        application.addBundle(new RouterBundle);
     }
 }

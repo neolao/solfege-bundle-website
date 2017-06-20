@@ -1,4 +1,5 @@
 imports:
-    - { resource: "services/application/commands.yml" }
-    - { resource: "services/application/services.yml" }
+    - { resource: "config/services/application/commands.yml" }
+    - { resource: "config/services/application/services.yml" }
+    - { resource: "config/services/domain/services.yml" }
  

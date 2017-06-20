@@ -27,16 +27,16 @@ export default class StartCommand extends ContainerAwareCommand implements Comma
     /**
      * Configure command
      */
-    *configure():Generator<*,*,*>
+    *configure():Generator<*,void,*>
     {
-        this.setName("server:start");
+        this.setName("website:start");
         this.setDescription("Start website server");
     }
 
     /**
      * Execute the command
      */
-    *execute():Generator<*,*,*>
+    *execute():Generator<*,void,*>
     {
         let container = this.getContainer();
         let serverService = yield container.get("solfege_website_server");

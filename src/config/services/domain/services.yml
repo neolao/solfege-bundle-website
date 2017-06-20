@@ -1,0 +1,7 @@
+services:
+    # Initialize servers
+    solfege_website_server_initializer:
+        class: Domain/Service/ServerInitializerService
+        arguments:
+            - "@http_server_factory"
+            - "%servers%"

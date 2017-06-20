@@ -3,5 +3,4 @@ services:
     solfege_website_server:
         class: Application/Service/ServerService
         arguments:
-            - "@http_server_factory"
-            - "%servers%"
+            - "@solfege_website_server_initializer"

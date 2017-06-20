@@ -1,6 +1,6 @@
 /* @flow */
-import assert from "assert"
-import type ServerFactory from "solfegejs-server/src/ServerFactory"
+import type ServerInitializer from "../../Domain/Service/ServerInitializerService"
+import type HttpServer from "solfegejs-server/src/HttpServer"
 
 /**
  * Service service
@@ -8,25 +8,18 @@ import type ServerFactory from "solfegejs-server/src/ServerFactory"
 export default class ServerService
 {
     /**
-     * Server factory from server bundle
+     * Server initializer service
      */
-    serverFactory:ServerFactory;
-
-    /**
-     * Server configurations
-     */
-    serverConfigs:Array<Object>;
+    serverInitializer:ServerInitializer;
 
     /**
      * Constructor
      *
-     * @param   {ServerFactory}     serverFactory   Server factory
-     * @param   {Array}             serverConfigs   Server configurations
+     * @param   {ServerInitializer} serverInitializer   Server initializer service
      */
-    constructor(serverFactory:ServerFactory, serverConfigs:Array<Object>)
+    constructor(serverInitializer:ServerInitializer)
     {
-        this.serverFactory = serverFactory;
-        this.serverConfigs = serverConfigs;
+        this.serverInitializer = serverInitializer;
     }
 
     /**
@@ -34,15 +27,10 @@ export default class ServerService
      */
     startServers()
     {
-        if (!Array.isArray(this.serverConfigs)) {
-            throw new Error("No server configured");
-        }
+        const servers:Array<HttpServer> = this.serverInitializer.getServers();
 
-        for (let serverConfig of this.serverConfigs) {
-            assert.ok(Number.isInteger(serverConfig.port), "Port is required");
-            let port = serverConfig.port;
-            let server = this.serverFactory.create();
-            server.start(port);
+        for (const server:HttpServer of servers) {
+            server.start();
         }
     }
 }
