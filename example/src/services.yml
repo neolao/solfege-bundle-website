@@ -1,0 +1,4 @@
+services:
+    example_controller_homepage:
+        class: "controller/HomepageController"
+

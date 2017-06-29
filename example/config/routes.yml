@@ -1,0 +1,4 @@
+example_homepage:
+    path:       /
+    controller: "@example_controller_homepage"
+    action:     index

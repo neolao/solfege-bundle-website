@@ -4,4 +4,5 @@ services:
         class: Domain/Service/ServerInitializerService
         arguments:
             - "@http_server_factory"
+            - "@http_router_loader_yaml"
             - "%servers%"

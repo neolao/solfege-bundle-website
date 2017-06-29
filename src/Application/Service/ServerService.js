@@ -25,12 +25,13 @@ export default class ServerService
     /**
      * Start servers
      */
-    startServers()
+    *startServers():Generator<*,void,*>
     {
-        const servers:Array<HttpServer> = this.serverInitializer.getServers();
+        const servers:Array<HttpServer> = yield this.serverInitializer.getServers();
 
         for (const server:HttpServer of servers) {
             server.start();
+            console.log(`Server "${server.getName()}" started on port ${server.getPort()}`);
         }
     }
 }

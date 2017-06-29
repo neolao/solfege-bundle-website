@@ -41,6 +41,6 @@ export default class StartCommand extends ContainerAwareCommand implements Comma
         let container = this.getContainer();
         let serverService = yield container.get("solfege_website_server");
 
-        serverService.startServers();
+        yield serverService.startServers();
     }
 }
